@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Dialog</title>
+
+</head>
+
+<body>
+     <div>
+          <div class="action" id="action">
+               <button id="btn">Click me</button>
+          </div>
+          <div class="container" id="container"></div>
+          <div class="dialogDiv" id="dialogDiv">
+               <p id="close" class="close">X</p>
+               hello</div>
+     </div>
+
+</body>
+
+</html>
+
+<style>
+     body {
+          margin: 0;
+          padding: 0;
+     }
+     .action{
+          position: absolute;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 200px;
+     }
+     .action button{
+          padding: 10px 60px;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0px 0px 5px;
+          background-image: linear-gradient(45deg, #20264a, #ff4040);
+          color: wheat;
+          font-size: 20px;
+          cursor: pointer;
+     }
+     .container {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          background-color: black;
+          opacity: 0.5;
+          z-index: -1;
+          display: none;
+     }
+     .dialogDiv {
+          border-radius: 10px;
+          box-shadow: 0px 0px 5px 5px lightslategrey;
+          width: 30%;
+          text-align: center;
+          position: absolute;
+          top: 35%;
+          left: 35%;
+          padding: 50px;
+          background-color: white;
+          display: none;
+          animation-name: openDialog;
+          animation-duration: 0.5s;
+     }
+     .dialogDiv p{
+          position: absolute;
+          top: 0px;
+          right: 25px;
+          cursor: pointer;
+     }
+     @keyframes openDialog {
+          from {
+          transform: scale(0);
+          }
+          to {
+          transform: scale(1);
+          }
+     }
+     @keyframes closeDialog {
+          from{
+               transform: scale(1);
+          }
+          to{
+               transform: scale(0);
+          }
+     }
+
+</style>
+
+<script>
+     const btn = document.getElementById('btn')
+     const container = document.getElementById('container')
+     const action = document.getElementById('action')
+     const dialogDiv = document.getElementById('dialogDiv')
+     const close = document.getElementById('close')
+     
+     btn.addEventListener("click", ()=> {
+          container.style.display = 'block'
+          action.style.cssText = `z-index: -1`
+          dialogDiv.style.display = 'block'
+     });
+     close.addEventListener('click', ()=>{
+          container.style.display = 'none'
+          action.style.cssText = `position: none;`
+          dialogDiv.style.display = 'none'
+     })
+     
+
+</script>
